@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#122b29" />
+  <title>원미 프라임 | 부동산 브리핑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="원미 프라임 홈">
+        <span class="brand-mark"><span>W</span><i></i></span>
+        <span class="brand-copy"><strong>WONMI <em>PRIME</em></strong><small>REAL ESTATE ADVISORY</small></span>
+      </a>
+      <div class="broker-card"><span class="eyebrow">YOUR LOCAL PARTNER</span><h2>홍길동부동산</h2><a href="tel:000-XXXX-XXXX">☎ &nbsp;000-XXXX-XXXX</a></div>
+      <div class="side-label">BRIEFING MENU</div>
+      <nav class="side-nav" aria-label="주요 메뉴">
+        <a class="active" href="#overview"><span class="nav-icon">▦</span>시장 브리핑</a>
+        <a href="#rankings"><span class="nav-icon">↗</span>아파트 TOP 10</a>
+        <a href="#recommendations"><span class="nav-icon">⌂</span>추천 매물</a>
+        <a href="#insight"><span class="nav-icon">◎</span>입지 분석</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="live-dot"></div><span>브리핑 데이터 준비됨</span><small id="syncLabel">최근 업데이트 확인 중</small></div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar"><div class="breadcrumb">경기도 부천시 <span>/</span> 원미구 <span>/</span> <b>부동산 브리핑</b></div><div class="top-actions"><span class="today" id="todayLabel"></span><button class="print-btn" onclick="window.print()">↗ <span>브리핑 인쇄</span></button><button class="avatar" aria-label="홍길동 공인중개사">홍</button></div></header>
+
+      <section class="welcome" id="overview">
+        <div><div class="eyebrow green">WONMI-GU · PROPERTY INSIGHTS</div><h1>원미구 부동산 브리핑<span>.</span></h1><p>오늘의 시장 흐름과 우리 동네 아파트 정보를 한눈에 살펴보세요.</p></div>
+        <div class="welcome-note"><span>LOCAL EXPERT</span><strong>홍길동부동산</strong><small>원미구에서 찾는 더 나은 집</small></div>
+      </section>
+
+      <section class="filter-bar" aria-label="브리핑 기간 및 지역 선택">
+        <div class="filter-label">브리핑 기준</div>
+        <label class="select-wrap"><span class="sr-only">동 선택</span><select id="dongSelect"><option value="all">원미구 전체</option><option>상동</option><option>중동</option><option>심곡동</option><option>원미동</option><option>역곡동</option><option>춘의동</option><option>도당동</option><option>약대동</option><option>소사동</option></select><span class="chevron">⌄</span></label>
+        <div class="segmented" role="group" aria-label="기간 종류"><button class="period-btn selected" data-period="week">주간</button><button class="period-btn" data-period="month">월간</button><button class="period-btn" data-period="custom">직접 지정</button></div>
+        <div class="date-range" id="dateRange"><label><span class="sr-only">시작일</span><input id="dateFrom" type="date"></label><span>—</span><label><span class="sr-only">종료일</span><input id="dateTo" type="date"></label></div>
+        <button class="apply-btn" id="applyFilters">조회하기 <span>→</span></button>
+      </section>
+
+      <section class="market-summary" aria-label="시장 요약">
+        <article class="metric-card"><div class="metric-head"><span>선택 기간 실거래</span><span class="metric-icon">▤</span></div><div class="metric-value"><strong id="tradeCount">128</strong><small>건</small></div><div class="metric-foot"><span class="up">↗ 8.4%</span><span>직전 기간 대비</span></div></article>
+        <article class="metric-card"><div class="metric-head"><span>매매 중위 거래가</span><span class="metric-icon">₩</span></div><div class="metric-value"><strong id="medianPrice">6.82</strong><small>억</small></div><div class="metric-foot"><span class="up">↗ 2.1%</span><span>직전 기간 대비</span></div></article>
+        <article class="metric-card"><div class="metric-head"><span>전세가율</span><span class="metric-icon">⌂</span></div><div class="metric-value"><strong>68.4</strong><small>%</small></div><div class="metric-foot"><span class="neutral">— 0.3%p</span><span>직전 기간 대비</span></div></article>
+        <article class="metric-card"><div class="metric-head"><span>매물 문의 지수</span><span class="metric-icon">↗</span></div><div class="metric-value"><strong>72</strong><small><span class="unit-plain">/ 100</span></small></div><div class="metric-foot"><span class="up">활발</span><span>관심도 기준</span></div></article>
+      </section>
+
+      <section class="content-grid" id="rankings">
+        <article class="panel rankings-panel">
+          <div class="panel-heading"><div><div class="eyebrow">RECENT DEAL HIGHLIGHTS</div><h2>원미구 아파트 TOP 10</h2><p>선택한 유형의 최근 거래가 기준 대표 단지</p></div><a href="#rankings" class="more-link">전체보기 <b>→</b></a></div>
+          <div class="trade-tabs" role="tablist"><button class="trade-tab active" data-type="sale">매매</button><button class="trade-tab" data-type="jeonse">전세</button><button class="trade-tab" data-type="monthly">월세</button><span class="data-state" id="dataState">샘플 브리핑 데이터</span></div>
+          <div class="ranking-layout"><div class="ranking-list" id="rankingList"></div><div class="map-column"><div class="map-title"><span>TOP 10 단지 위치</span><button id="mapReset" title="전체 위치 보기">전체 보기 ⤢</button></div><div id="map" aria-label="원미구 아파트 위치 지도"></div><div class="map-legend"><span><i class="legend-pin"></i>TOP 10 단지</span><span><i class="legend-pin chosen"></i>선택 단지</span><small>지도 위치는 단지 인근 기준</small></div></div></div>
+          <div class="source-note">실거래 데이터는 국토교통부 신고 기준이며, 최근 신고분은 반영까지 시차가 있을 수 있습니다. 지표 카드 일부와 샘플 거래·지도 위치는 시연용 예시입니다.</div>
+        </article>
+
+        <aside class="panel listing-panel" id="recommendations">
+          <div class="panel-heading"><div><div class="eyebrow">CURATED FOR YOU</div><h2>추천 매물</h2><p>홍길동부동산이 엄선한 매물</p></div><button class="add-listing" id="addListing" title="추천 매물 추가">＋</button></div>
+          <div class="listing-list" id="listingList"></div>
+          <button class="all-listings" id="allListings">추천 매물 전체 보기 <span>→</span></button>
+        </aside>
+      </section>
+
+      <section class="panel insight-panel" id="insight">
+        <div class="insight-top"><div><div class="eyebrow">NEIGHBORHOOD AT A GLANCE</div><h2 id="insightTitle">단지 입지 한눈에 보기</h2><p id="insightSubtitle">아파트나 추천 매물을 선택하면 주요 생활 정보를 함께 확인할 수 있습니다.</p></div><div class="insight-chip"><span class="live-dot"></span>한눈에 보는 입지 정보</div></div>
+        <div class="insight-grid">
+          <article class="insight-card"><div class="insight-icon transport">⇄</div><div><h3>교통</h3><p id="transportInfo">서울 1호선·7호선, 광역·시내버스 주요 노선 정보</p><small>지하철 · 버스 · 광역 교통</small></div></article>
+          <article class="insight-card"><div class="insight-icon school">⌂</div><div><h3>학군</h3><p id="schoolInfo">상동초 · 상일중 · 상원고 등 인근 학교</p><small>초등학교 · 중학교 · 고등학교</small></div></article>
+          <article class="insight-card"><div class="insight-icon living">✳</div><div><h3>생활·상권</h3><p id="livingInfo">현대백화점 중동점 · 이마트 · 상동호수공원</p><small>마트 · 백화점 · 카페 · 관공서</small></div></article>
+          <article class="insight-card"><div class="insight-icon plan">⌖</div><div><h3>주변 개발계획</h3><p id="planInfo">부천영상문화산업단지 등 주변 계획은 발표·인허가 단계 확인이 필요합니다.</p><small>공개 계획 참고 · 계약 전 최신 현황 확인</small></div></article>
+        </div>
+      </section>
+
+      <footer class="footer"><span>© 2026 홍길동부동산 · WONMI PRIME</span><span>공인중개사 브리핑 참고용 · 거래 판단은 현장 확인 후 진행해 주세요.</span></footer>
+    </main>
+  </div>
+  <dialog id="listingDialog"><form method="dialog"><button class="dialog-close" aria-label="닫기">×</button><div class="eyebrow">ADD TO CURATED LIST</div><h2>추천 매물 추가</h2><p>브리핑에 보여줄 매물 정보를 입력해 주세요.</p><label>단지명<input id="newName" placeholder="예: ○○마을 2단지" required></label><div class="dialog-row"><label>동<input id="newDong" placeholder="상동" required></label><label>거래유형<select id="newType"><option>매매</option><option>전세</option><option>월세</option></select></label></div><div class="dialog-row"><label>가격<input id="newPrice" placeholder="7억 2,000" required></label><label>면적<input id="newArea" placeholder="84㎡" required></label></div><label>매물 한 줄 소개<input id="newDesc" placeholder="역세권 · 남향 · 올수리"></label><button class="dialog-submit" id="saveListing" value="default">매물 추가</button></form></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#122b29" />
-  <title>원미 프라임 | 부동산 브리핑</title>
+  <meta name="theme-color" content="#143b34" />
+  <title>원미구 저층주거 투자 브리핑 | 춘의역탑부동산</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,75 +15,66 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="#top" aria-label="원미 프라임 홈">
-        <span class="brand-mark"><span>W</span><i></i></span>
-        <span class="brand-copy"><strong>WONMI <em>PRIME</em></strong><small>REAL ESTATE ADVISORY</small></span>
+      <a class="brand" href="#top" aria-label="원미구 전문부동산 홈">
+        <span class="brand-seal"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 43 15v18L24 44 5 33V15L24 4Z"/><path d="M14 32V18l10-6 10 6v14M19 32V22l5-3 5 3v10M11 36h26"/><circle cx="24" cy="8" r="2"/></svg></span>
+        <span class="brand-copy"><strong>원미구 <em>전문부동산</em></strong><small>LOCAL PROPERTY ADVISORY</small></span>
       </a>
-      <div class="broker-card"><span class="eyebrow">YOUR LOCAL PARTNER</span><h2>홍길동부동산</h2><a href="tel:000-XXXX-XXXX">☎ &nbsp;000-XXXX-XXXX</a></div>
-      <div class="side-label">BRIEFING MENU</div>
-      <nav class="side-nav" aria-label="주요 메뉴">
-        <a class="active" href="#overview"><span class="nav-icon">▦</span>시장 브리핑</a>
-        <a href="#rankings"><span class="nav-icon">↗</span>아파트 TOP 10</a>
-        <a href="#recommendations"><span class="nav-icon">⌂</span>추천 매물</a>
-        <a href="#insight"><span class="nav-icon">◎</span>입지 분석</a>
+      <div class="broker-card"><span class="eyebrow">춘의역 생활권 전문</span><h2>춘의역탑부동산<br>공인중개사사무소</h2><small>춘의 · 도당 · 원미 저층주거 투자 브리핑</small></div>
+      <div class="side-label">INVESTMENT BRIEF</div>
+      <nav class="side-nav" aria-label="브리핑 목차">
+        <a class="active" href="#summary"><span class="nav-icon">◈</span>투자 요약</a>
+        <a href="#map-section"><span class="nav-icon">⌖</span>입지 지도</a>
+        <a href="#mobility"><span class="nav-icon">⇄</span>교통·학군·상권</a>
+        <a href="#development"><span class="nav-icon">▤</span>개발·사업성</a>
       </nav>
-      <div class="sidebar-bottom"><div class="live-dot"></div><span>브리핑 데이터 준비됨</span><small id="syncLabel">최근 업데이트 확인 중</small></div>
+      <div class="sidebar-bottom"><div class="live-dot"></div><span id="dataStatus">공공데이터 연결 확인 중</span><small id="syncLabel">API 연결 상태 확인 중</small></div>
     </aside>
 
     <main id="top" class="main-content">
-      <header class="topbar"><div class="breadcrumb">경기도 부천시 <span>/</span> 원미구 <span>/</span> <b>부동산 브리핑</b></div><div class="top-actions"><span class="today" id="todayLabel"></span><button class="print-btn" onclick="window.print()">↗ <span>브리핑 인쇄</span></button><button class="avatar" aria-label="홍길동 공인중개사">홍</button></div></header>
+      <header class="topbar"><div class="breadcrumb">경기도 부천시 <span>/</span> 원미구 <span>/</span> <b>저층주거 투자 브리핑</b></div><div class="top-actions"><span class="today" id="todayLabel"></span><button class="print-btn" id="printBriefing" type="button" aria-label="브리핑 인쇄">⎙ <span>인쇄</span></button></div></header>
 
-      <section class="welcome" id="overview">
-        <div><div class="eyebrow green">WONMI-GU · PROPERTY INSIGHTS</div><h1>원미구 부동산 브리핑<span>.</span></h1><p>오늘의 시장 흐름과 우리 동네 아파트 정보를 한눈에 살펴보세요.</p></div>
-        <div class="welcome-note"><span>LOCAL EXPERT</span><strong>홍길동부동산</strong><small>원미구에서 찾는 더 나은 집</small></div>
+      <section class="welcome" id="summary">
+        <div><div class="eyebrow green">WONMI-GU · LOW-RISE HOUSING INVESTMENT</div><h1>춘의 · 도당 · 원미<br>상가주택 투자 브리핑<span>.</span></h1><p>아파트 제외 · 노후 단독·다가구 매입 후 신축 관점 · 기준일 <b id="asOfDate"></b></p></div>
+        <div class="welcome-note"><span>LOCAL EXPERT</span><strong>춘의역탑부동산공인중개사사무소</strong><small>원미구 저층주거와 산업배후 입지 분석</small></div>
       </section>
 
-      <section class="filter-bar" aria-label="브리핑 기간 및 지역 선택">
-        <div class="filter-label">브리핑 기준</div>
-        <label class="select-wrap"><span class="sr-only">동 선택</span><select id="dongSelect"><option value="all">원미구 전체</option><option>상동</option><option>중동</option><option>심곡동</option><option>원미동</option><option>역곡동</option><option>춘의동</option><option>도당동</option><option>약대동</option><option>소사동</option></select><span class="chevron">⌄</span></label>
-        <div class="segmented" role="group" aria-label="기간 종류"><button class="period-btn selected" data-period="week">주간</button><button class="period-btn" data-period="month">월간</button><button class="period-btn" data-period="custom">직접 지정</button></div>
-        <div class="date-range" id="dateRange"><label><span class="sr-only">시작일</span><input id="dateFrom" type="date"></label><span>—</span><label><span class="sr-only">종료일</span><input id="dateTo" type="date"></label></div>
-        <button class="apply-btn" id="applyFilters">조회하기 <span>→</span></button>
+      <section class="thesis-banner"><div class="thesis-mark">투자 판단</div><div><strong>입지 선별형 투자: 중간 이상 잠재력, 필지별 사업성 편차 큼</strong><p>산업 종사자 임대수요와 인근 주민 생활수요를 함께 확보하고, 정비구역·지구단위계획·주차 조건을 매입 전에 확인하는 전략</p></div><span class="thesis-tag">아파트 제외</span></section>
+
+      <section class="metric-grid" aria-label="지역 핵심 지표">
+        <article class="metric-card"><div class="metric-head"><span>춘의동 주민</span><span class="metric-icon">⌂</span></div><div class="metric-value"><strong>14,070</strong><small>명</small></div><div class="metric-foot">2026년 9월 잠정치</div></article>
+        <article class="metric-card"><div class="metric-head"><span>도당동 주민</span><span class="metric-icon">⌂</span></div><div class="metric-value"><strong>20,941</strong><small>명</small></div><div class="metric-foot">2026년 9월 잠정치</div></article>
+        <article class="metric-card"><div class="metric-head"><span>원미1·2동 주민</span><span class="metric-icon">⌂</span></div><div class="metric-value"><strong>28,526</strong><small>명</small></div><div class="metric-foot">행정동 합산 · 2026년 9월</div></article>
+        <article class="metric-card"><div class="metric-head"><span>접근 가능한 도시철도</span><span class="metric-icon">⇄</span></div><div class="metric-value"><strong>7호선</strong><small>춘의역</small></div><div class="metric-foot">1호선 부천역은 버스 연계</div></article>
+        <article class="metric-card"><div class="metric-head"><span>원미동 재정비촉진지구</span><span class="metric-icon">⌖</span></div><div class="metric-value"><strong>약 23</strong><small>만㎡</small></div><div class="metric-foot">2026.02 지정 · 계획수립 단계</div></article>
       </section>
 
-      <section class="market-summary" aria-label="시장 요약">
-        <article class="metric-card"><div class="metric-head"><span>선택 기간 실거래</span><span class="metric-icon">▤</span></div><div class="metric-value"><strong id="tradeCount">128</strong><small>건</small></div><div class="metric-foot"><span class="up">↗ 8.4%</span><span>직전 기간 대비</span></div></article>
-        <article class="metric-card"><div class="metric-head"><span>매매 중위 거래가</span><span class="metric-icon">₩</span></div><div class="metric-value"><strong id="medianPrice">6.82</strong><small>억</small></div><div class="metric-foot"><span class="up">↗ 2.1%</span><span>직전 기간 대비</span></div></article>
-        <article class="metric-card"><div class="metric-head"><span>전세가율</span><span class="metric-icon">⌂</span></div><div class="metric-value"><strong>68.4</strong><small>%</small></div><div class="metric-foot"><span class="neutral">— 0.3%p</span><span>직전 기간 대비</span></div></article>
-        <article class="metric-card"><div class="metric-head"><span>매물 문의 지수</span><span class="metric-icon">↗</span></div><div class="metric-value"><strong>72</strong><small><span class="unit-plain">/ 100</span></small></div><div class="metric-foot"><span class="up">활발</span><span>관심도 기준</span></div></article>
+      <section class="panel map-panel" id="map-section">
+        <div class="panel-heading"><div><div class="eyebrow">LOCATION & LOW-RISE HOUSING</div><h2>노후 저층주거와 배후 입지 지도</h2><p>주요 시설은 오른쪽 범례에 항상 표시합니다. 노후주거 권역은 개략 범위이며 개별 건물의 준공연도 판정이 아닙니다.</p></div><div class="map-source">Esri World Street Map · 공공기관 공개자료</div></div>
+        <div class="map-layout"><div class="map-frame"><div id="map" aria-label="부천 원미구 춘의동 도당동 원미동 입지 지도"></div><div class="map-compass">N<br>↑</div><div class="map-overlay-key"><span><i class="line-swatch"></i>7호선</span><span><i class="area-swatch"></i>노후 저층주거 개략권역</span><span>색상 원형 = 시설 종류</span></div></div><aside class="map-key"><h3>지도 범례·주요 시설</h3><div class="legend-item"><i class="swatch old"></i><span><b>노후 저층주거 밀집권역</b><small>개략 영역 · 현장·건축물대장 확인 필요</small></span></div><div class="legend-item"><i class="swatch transit"></i><span><b>교통</b><small>7호선 춘의역·부천종합운동장역 · 1호선 부천역<br>KTX 광명역(지도 범위 밖)</small></span></div><div class="legend-item"><i class="swatch school"></i><span><b>초·중·고</b><small>도당초·도당중·도당고 · 부천북초·원미중·부천북고</small></span></div><div class="legend-item"><i class="swatch industrial"></i><span><b>산업·지식산업센터</b><small>춘의테크노파크 1·2차 · 춘의테크노타워<br>도당 제조·조명 산업권</small></span></div><div class="legend-item"><i class="swatch commerce"></i><span><b>마트·시장·상권</b><small>현대백화점 중동점 · 이마트 중동점<br>도당시장 · 원미종합시장 · 춘의역 카페·음식점 상권</small></span></div><div class="legend-item"><i class="swatch public"></i><span><b>관공서·공공시설</b><small>원미구청 · 춘의동·도당동 행정복지센터<br>부천종합운동장</small></span></div><div class="map-caveat"><b>정확도 안내</b><p>시설 표시는 위치 참고용이며 실제 보행시간·통학구역은 주소별로 다릅니다. KTX역은 대상지 외부에 있어 광명역·서울역 환승 교통을 확인해야 합니다. 노후 권역은 개략 범위로 개별 건물의 준공연도나 공식 정비구역 경계가 아닙니다.</p></div></aside></div>
       </section>
 
-      <section class="content-grid" id="rankings">
-        <article class="panel rankings-panel">
-          <div class="panel-heading"><div><div class="eyebrow">RECENT DEAL HIGHLIGHTS</div><h2>원미구 아파트 TOP 10</h2><p>선택한 유형의 최근 거래가 기준 대표 단지</p></div><a href="#rankings" class="more-link">전체보기 <b>→</b></a></div>
-          <div class="trade-tabs" role="tablist"><button class="trade-tab active" data-type="sale">매매</button><button class="trade-tab" data-type="jeonse">전세</button><button class="trade-tab" data-type="monthly">월세</button><span class="data-state" id="dataState">샘플 브리핑 데이터</span></div>
-          <div class="ranking-layout"><div class="ranking-list" id="rankingList"></div><div class="map-column"><div class="map-title"><span>TOP 10 단지 위치</span><button id="mapReset" title="전체 위치 보기">전체 보기 ⤢</button></div><div id="map" aria-label="원미구 아파트 위치 지도"></div><div class="map-legend"><span><i class="legend-pin"></i>TOP 10 단지</span><span><i class="legend-pin chosen"></i>선택 단지</span><small>지도 위치는 단지 인근 기준</small></div></div></div>
-          <div class="source-note">실거래 데이터는 국토교통부 신고 기준이며, 최근 신고분은 반영까지 시차가 있을 수 있습니다. 지표 카드 일부와 샘플 거래·지도 위치는 시연용 예시입니다.</div>
-        </article>
-
-        <aside class="panel listing-panel" id="recommendations">
-          <div class="panel-heading"><div><div class="eyebrow">CURATED FOR YOU</div><h2>추천 매물</h2><p>홍길동부동산이 엄선한 매물</p></div><button class="add-listing" id="addListing" title="추천 매물 추가">＋</button></div>
-          <div class="listing-list" id="listingList"></div>
-          <button class="all-listings" id="allListings">추천 매물 전체 보기 <span>→</span></button>
-        </aside>
+      <section class="two-col" id="mobility">
+        <article class="panel info-panel"><div class="section-title"><span class="section-number">01</span><div><div class="eyebrow">MOBILITY</div><h2>교통 접근성</h2></div></div><div class="info-table"><div><b>지하철</b><p><strong>7호선 춘의역</strong>이 춘의동 핵심 대중교통축입니다. 부천종합운동장역에서도 7호선을 이용할 수 있고, 1호선 부천역은 버스·택시 연계권입니다.</p></div><div><b>KTX</b><p>부천시 안에는 KTX 정차역이 없습니다. 광명역·서울역 등으로 이동 후 KTX를 이용하는 구조입니다. 실제 이동시간은 출발지, 환승 대기, 시간대별 교통에 따라 달라집니다.</p></div><div><b>버스</b><p>춘의역·꿈마을·부천로 주변 정류장에서 시내버스를 이용할 수 있습니다. 춘의동 행정복지센터 안내에는 춘의역 5번 출구 또는 꿈마을 정류장 경유 노선 23·56·700번이 표시돼 있습니다. 노선 변경 가능성이 있어 계약 전 최신 운행정보 확인이 필요합니다.</p></div><div><b>투자 해석</b><p>역 출구 직선거리보다 역에서 주거지·산업시설로 이어지는 실제 보행 동선, 야간 귀가 동선, 주차·정차 여건이 점포 매출과 임대료에 더 직접적입니다.</p></div></div></article>
+        <article class="panel info-panel"><div class="section-title"><span class="section-number">02</span><div><div class="eyebrow">SCHOOLS & DAILY LIFE</div><h2>학군·생활상권</h2></div></div><div class="compact-lists"><div class="list-block"><h3>초·중·고</h3><p><b>초등</b> 도당초등학교 · 부천북초등학교 · 부천신흥초등학교 권역</p><p><b>중등</b> 도당중학교 · 원미중학교</p><p><b>고등</b> 도당고등학교 · 부천북고등학교</p><small>춘의동 초등 통학구역과 중·고 배정은 주소·학교군·해당 연도 기준으로 부천교육지원청에 확인하세요.</small></div><div class="list-block"><h3>마트·백화점·상권</h3><p><b>대형쇼핑</b> 현대백화점 중동점 · 이마트 중동점 · 홈플러스 부천상동점</p><p><b>근린상권</b> 춘의역 주변 음식점·카페·편의점 · 도당시장 · 원미종합시장</p><p><b>주요 상업축</b> 신중동역·부천시청역 상권 및 길주로 상업시설은 춘의·도당·원미보다 한 단계 큰 광역 소비권</p><small>가까운 시설이라도 차량·보행 접근성 및 상권 업종구성은 블록별로 다릅니다.</small></div><div class="list-block"><h3>관공서·공공시설</h3><p>원미구청(원미동) · 춘의동 행정복지센터 · 도당동 행정복지센터 · 부천종합운동장 · 원미도서관 권역</p><small>구청·행정복지센터는 반복 방문하는 생활서비스 수요를 만듭니다.</small></div></div></article>
       </section>
 
-      <section class="panel insight-panel" id="insight">
-        <div class="insight-top"><div><div class="eyebrow">NEIGHBORHOOD AT A GLANCE</div><h2 id="insightTitle">단지 입지 한눈에 보기</h2><p id="insightSubtitle">아파트나 추천 매물을 선택하면 주요 생활 정보를 함께 확인할 수 있습니다.</p></div><div class="insight-chip"><span class="live-dot"></span>한눈에 보는 입지 정보</div></div>
-        <div class="insight-grid">
-          <article class="insight-card"><div class="insight-icon transport">⇄</div><div><h3>교통</h3><p id="transportInfo">서울 1호선·7호선, 광역·시내버스 주요 노선 정보</p><small>지하철 · 버스 · 광역 교통</small></div></article>
-          <article class="insight-card"><div class="insight-icon school">⌂</div><div><h3>학군</h3><p id="schoolInfo">상동초 · 상일중 · 상원고 등 인근 학교</p><small>초등학교 · 중학교 · 고등학교</small></div></article>
-          <article class="insight-card"><div class="insight-icon living">✳</div><div><h3>생활·상권</h3><p id="livingInfo">현대백화점 중동점 · 이마트 · 상동호수공원</p><small>마트 · 백화점 · 카페 · 관공서</small></div></article>
-          <article class="insight-card"><div class="insight-icon plan">⌖</div><div><h3>주변 개발계획</h3><p id="planInfo">부천영상문화산업단지 등 주변 계획은 발표·인허가 단계 확인이 필요합니다.</p><small>공개 계획 참고 · 계약 전 최신 현황 확인</small></div></article>
-        </div>
+      <section class="panel compare-panel"><div class="panel-heading"><div><div class="eyebrow">AREA COMPARISON · APARTMENTS EXCLUDED</div><h2>세 지역 투자전략 비교</h2><p>저층 단독·다가구 매입 후 상가주택 신축을 전제로 한 정성 평가</p></div></div><div class="compare-grid"><article><span class="compare-name">춘의동</span><b class="compare-rating good">우선 검토</b><p><strong>산업·역세권 배후수요</strong><br>춘의역과 지식산업센터·공장 출퇴근 동선, 지역 주거수요가 겹치는 블록에서 주거 임대와 소형 생활점포 결합을 검토합니다.</p><small>핵심 확인: 준공업 지구단위계획, 점심 외부유동, 야간 정주성</small></article><article><span class="compare-name">도당동</span><b class="compare-rating mid">선별 매입</b><p><strong>산업수요 + 주민 생활수요</strong><br>공장 종사자 수요에 시장·주거지 기반 생활수요를 더하는 모델이 적합합니다. 넓은 점포보다 소형 점포와 임대주택 중심으로 검토합니다.</p><small>핵심 확인: 도당 정비구역 중첩, 도로·주차, 점포 공실</small></article><article><span class="compare-name">원미동</span><b class="compare-rating watch">정비계획 우선 확인</b><p><strong>도심재편 잠재력 + 사업지정 위험</strong><br>정비사업의 장기 변화 가능성이 있으나 촉진지구·복합사업 경계에서는 독립 신축의 일정과 권리가 달라질 수 있습니다.</p><small>핵심 확인: 촉진지구·도심복합·가로주택 경계 및 권리산정</small></article></div></section>
+
+      <section class="panel industry-panel"><div class="section-title"><span class="section-number">03</span><div><div class="eyebrow">EMPLOYMENT CATCHMENT</div><h2>지식산업센터·공장 배후수요 시너지</h2></div></div><div class="industry-grid"><div class="industry-point"><span class="industry-icon">▦</span><div><b>산업 일자리</b><p>춘의권(ICT)·도당권(조명) 등 부천의 산업집적축과 춘의테크노파크 단지, 제조공장이 인접합니다. 직원·협력업체·방문객이 평일 주간 수요를 형성할 수 있습니다.</p></div></div><div class="industry-point"><span class="industry-icon">⌂</span><div><b>주거 임대</b><p>소형·중형 임대주택은 직주근접을 원하는 1~2인 종사자, 협력사 직원, 지역 내 직장인 수요를 겨냥할 수 있습니다. 주차·수납·방음·분리된 출입동선이 경쟁력입니다.</p></div></div><div class="industry-point"><span class="industry-icon">☕</span><div><b>점포 업종</b><p>점심·저녁 식사, 테이크아웃, 카페, 편의소매, 세탁·수선, 택배·복사, 소규모 운동·돌봄 서비스가 후보입니다. 점심시간 외부이동과 주변 구내식당·공실부터 확인해야 합니다.</p></div></div><div class="industry-point"><span class="industry-icon">↔</span><div><b>주거 수요와 결합</b><p>산업수요는 평일 낮, 주거 수요는 저녁·주말을 보완할 수 있습니다. 주민과 종사자의 이동 경로가 겹치는 코너·역 접근 동선이 시너지의 핵심입니다.</p></div></div></div><div class="industry-verdict"><b>위험 요인</b><span>공장 근접에 따른 소음·분진·화물차, 낮과 밤의 수요 편차, 소규모 점포 공실, 지식산업센터 내부 편의시설과의 경쟁, 신축비·금융비 상승</span></div></section>
+
+      <section class="two-col" id="development">
+        <article class="panel info-panel"><div class="section-title"><span class="section-number">04</span><div><div class="eyebrow">DEVELOPMENT & REGENERATION</div><h2>주변 개발·정비계획</h2></div></div><div class="timeline"><div><time>진행·계획</time><b>원미동 재정비촉진지구</b><p>원미동 194-26번지 일원 약 23만㎡가 2026년 2월 지정됐습니다. 후속 재정비촉진계획에서 구역·밀도·기반시설 등이 구체화될 예정이므로 경계 안 필지는 일반 신축 투자와 정비사업 참여 전략을 분리해 검토해야 합니다.</p></div><div><time>2026.06 기준</time><b>원미사거리 북측 도심공공주택복합사업</b><p>부천시 추진현황에 사업계획 승인 단계로 등재돼 있습니다. 원미동 매입 검토 시 복합사업 경계와 권리산정·사업일정을 확인하십시오.</p></div><div><time>도당동</time><b>도당1-1구역 정비사업</b><p>도당동 내 정비사업 진행 구역이 있습니다. 도당동 전역이 대상은 아니므로 주소와 지번 기준으로 경계 중첩 여부를 확인해야 합니다.</p></div><div><time>산업기반</time><b>춘의 경제기반형 도시재생·준공업지역 지구단위계획</b><p>R&D·기업지원·산업연계 계획과 춘의준공업지역 지구단위계획이 적용되는 구간이 있습니다. 지역 이름만으로 용도·용적률을 가정하지 말고 필지별 계획도와 건축 사전검토를 확인하십시오.</p></div></div></article>
+        <article class="panel info-panel"><div class="section-title"><span class="section-number">05</span><div><div class="eyebrow">INVESTMENT SCREEN</div><h2>매입·신축 사업성 체크</h2></div></div><div class="investment-score"><div class="score-label">종합 투자 매력도</div><div class="score-main"><strong>조건부 유망</strong><span>필지별 편차 큼</span></div><p>산업 배후·기존 주거수요·7호선 접근성이 결합된 후보지는 매력적입니다. 높은 토지 매입가와 신축비를 감당할 임대수익이 확인되지 않으면 수익성이 낮아질 수 있습니다.</p></div><div class="formula"><b>수익성 판단식</b><div>안정화 순영업소득(NOI) ÷ 총사업비</div><small>총사업비 = 매입가 + 취득·중개 + 철거·설계·인허가 + 공사비 + 금융비 + 예비비</small></div><ul class="check-list"><li>토지이용계획·용도지역·춘의 지구단위계획·허용 용도</li><li>접도·도로 폭·건축선·주차대수·일조·높이·용적률</li><li>정비촉진·복합사업·가로주택정비구역 경계와 권리관계</li><li>점포·주택 실제 임대료, 공실 기간, 주변 신규공급 현장 조사</li><li>공사비 10% 상승·준공 6개월 지연·임대료 하락 시 민감도</li></ul></article>
       </section>
 
-      <footer class="footer"><span>© 2026 홍길동부동산 · WONMI PRIME</span><span>공인중개사 브리핑 참고용 · 거래 판단은 현장 확인 후 진행해 주세요.</span></footer>
+      <section class="panel data-panel"><div class="panel-heading"><div><div class="eyebrow">LIVE DATA SOURCES</div><h2>공공데이터·한국부동산원 연동 현황</h2><p>아파트 거래를 제외하고 단독·다가구 실거래와 한국부동산원 통계를 연결합니다.</p></div><span class="data-badge" id="apiBadge">연결 상태 확인 중</span></div><div class="data-cards"><div class="api-card"><div class="api-title"><b>국토교통부 단독·다가구 실거래</b><span id="houseApiStatus">조회 중</span></div><p id="houseApiInfo">최근 12개월 매매자료를 법정동별로 조회합니다. 거래에 주소 좌표가 없으므로 지도 핀을 개별 거래 위치로 오인하지 않도록 집계·표시합니다.</p><div class="api-detail" id="houseTradeSummary">거래자료 수신 대기 중</div></div><div class="api-card"><div class="api-title"><b>한국부동산원 R-ONE 부동산통계</b><span id="rebApiStatus">조회 중</span></div><p id="rebApiInfo">공식 Open API에서 지가변동률·상업용부동산 임대동향 통계표 메타데이터를 조회합니다. 지역 통계의 공표 단위와 시차를 함께 표시합니다.</p><div class="api-detail" id="rebStatsSummary">통계표 카탈로그 수신 대기 중</div></div></div><div class="source-footer">노후주거 권역은 지도에서 개략 범위로 제시했습니다. 정확한 사용승인일은 건축물대장, 거래가격은 단독·다가구 매매 신고자료, 상업 임대환경은 한국부동산원 통계의 조사 권역·표본을 기준으로 별도 확인해야 합니다.</div></section>
+
+      <footer class="footer"><span>© 2026 춘의역탑부동산공인중개사사무소 · 원미구 전문부동산</span><span>공개자료 기반 투자 검토용 · 매입 전 필지별 건축·정비·권리·현장 확인</span></footer>
     </main>
   </div>
-  <dialog id="listingDialog"><form method="dialog"><button class="dialog-close" aria-label="닫기">×</button><div class="eyebrow">ADD TO CURATED LIST</div><h2>추천 매물 추가</h2><p>브리핑에 보여줄 매물 정보를 입력해 주세요.</p><label>단지명<input id="newName" placeholder="예: ○○마을 2단지" required></label><div class="dialog-row"><label>동<input id="newDong" placeholder="상동" required></label><label>거래유형<select id="newType"><option>매매</option><option>전세</option><option>월세</option></select></label></div><div class="dialog-row"><label>가격<input id="newPrice" placeholder="7억 2,000" required></label><label>면적<input id="newArea" placeholder="84㎡" required></label></div><label>매물 한 줄 소개<input id="newDesc" placeholder="역세권 · 남향 · 올수리"></label><button class="dialog-submit" id="saveListing" value="default">매물 추가</button></form></dialog>
   <div class="toast" id="toast" role="status"></div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
+
